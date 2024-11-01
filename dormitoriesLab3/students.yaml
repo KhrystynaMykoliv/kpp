@@ -1,0 +1,74 @@
+- !!dormitories.Models.Student
+  fee: null
+  firstName: John
+  lastName: Doe
+  room:
+    roomNumber: 91
+- !!dormitories.Models.Student
+  fee:
+    amount: 5500.0
+    discount: false
+  firstName: Jane
+  lastName: Doe
+  room:
+    roomNumber: 102
+- !!dormitories.Models.Student
+  fee:
+    amount: 5200.0
+    discount: false
+  firstName: Alice
+  lastName: Johnson
+  room:
+    roomNumber: 103
+- !!dormitories.Models.Student
+  fee:
+    amount: 5300.0
+    discount: false
+  firstName: Bob
+  lastName: Smith
+  room:
+    roomNumber: 104
+- !!dormitories.Models.Student
+  fee: null
+  firstName: Charlie
+  lastName: Brown
+  room:
+    roomNumber: 105
+- !!dormitories.Models.Student
+  fee:
+    amount: 5400.0
+    discount: false
+  firstName: David
+  lastName: Wilson
+  room:
+    roomNumber: 106
+- !!dormitories.Models.Student
+  fee:
+    amount: 5600.0
+    discount: false
+  firstName: Eve
+  lastName: Davis
+  room:
+    roomNumber: 77
+- !!dormitories.Models.Student
+  fee:
+    amount: 5000.0
+    discount: false
+  firstName: Frank
+  lastName: Miller
+  room:
+    roomNumber: 108
+- !!dormitories.Models.Student
+  fee:
+    amount: 5300.0
+    discount: false
+  firstName: Grace
+  lastName: Taylor
+  room:
+    roomNumber: 109
+- !!dormitories.Models.Student
+  fee: null
+  firstName: Hank
+  lastName: Moore
+  room:
+    roomNumber: 110

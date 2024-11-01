@@ -1,31 +1,32 @@
 package regex;
 
-import regex.Services.FileReaderService;
-import regex.Services.NestedParenthesesChecker;
-import regex.Services.SentenceExtractor;
-
-import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
-
     public static void main(String[] args) {
-        String filePath = "text.txt";
+        String sentence = "I love kebab very much";  // Ваше речення
+        System.out.println(removeSpacesUsingRegex(sentence));
+    }
 
-        FileReaderService fileReaderService = new FileReaderService();
-        SentenceExtractor sentenceExtractor = new SentenceExtractor();
-        NestedParenthesesChecker checker = new NestedParenthesesChecker();
+    public static String removeSpacesUsingRegex(String sentence) {
 
-        try {
-            String text = fileReaderService.readFile(filePath);
-            String[] sentences = sentenceExtractor.extractSentences(text);
+        String cleanedSentence = sentence.replaceAll("\\s+", " ");
 
-            for (String sentence : sentences) {
-                if (checker.hasNestedParentheses(sentence)) {
-                    System.out.println(sentence);
-                }
-            }
-        } catch (IOException e) {
-            System.out.println("Помилка читання файлу: " + e.getMessage());
+
+        Pattern pattern = Pattern.compile("^\\S+\\s(\\S+)\\s(.*)\\s(\\S+)$");
+        Matcher matcher = pattern.matcher(cleanedSentence);
+
+        if (matcher.matches()) {
+            String firstWord = cleanedSentence.split("\\s+")[0];
+            String secondWord = matcher.group(1);
+            String middleWords = matcher.group(2).replaceAll("\\s", ""); // Середні слова без пробілів
+            String lastWord = matcher.group(3);
+
+
+            return firstWord + " " + secondWord + middleWords + " " + lastWord;
         }
+
+        return sentence;
     }
 }

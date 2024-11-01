@@ -13,7 +13,7 @@ import java.util.List;
 public class RouteInfoService {
     List<String> routeDetails = new ArrayList<>();
 
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm z");
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z VV");
 
     public List<String> getRouteInfo(Route route) {
         if (route.getLegs().isEmpty()) {
@@ -26,10 +26,17 @@ public class RouteInfoService {
         
         LocalDateTime startTime = route.getLegs().get(0).getArrivalTime().minus(route.getLegs().get(0).getTravelTime());
         ZoneId startZone = route.getLegs().get(0).getFrom().getZoneId();
-        
+
+        if (startZone == null) {
+            startZone = ZoneId.systemDefault();
+        }
+
         LocalDateTime endTime = route.getLegs().get(route.getLegs().size() - 1).getArrivalTime();
         ZoneId endZone = route.getLegs().get(route.getLegs().size() - 1).getTo().getZoneId();
 
+        if (endZone == null) {
+            endZone = ZoneId.systemDefault();  // Використовуємо локальну зону за замовчуванням
+        }
         for (Leg leg : route.getLegs()) {
             totalDistance += leg.getDistance();
             totalDuration = totalDuration.plus(leg.getTravelTime()).plus(leg.getStopDuration());
@@ -53,10 +60,19 @@ public class RouteInfoService {
             routeDetails.add("Відстань: " + leg.getDistance() + " км");
             routeDetails.add("Час подорожі: " + formatDuration(leg.getTravelTime()));
             routeDetails.add("Час зупинки: " + formatDuration(leg.getStopDuration()));
-            routeDetails.add("Прибуття: " + leg.getArrivalTime().atZone(leg.getTo().getZoneId()).format(formatter));
+
+
+            ZoneId zone = leg.getTo().getZoneId();
+            if (zone == null) {
+                zone = ZoneId.of("UTC");
+            }
+
+
+            routeDetails.add("Прибуття: " + leg.getArrivalTime().atZone(zone).format(formatter));
             routeDetails.add("");
         }
     }
+
 
     private String formatDuration(Duration duration) {
         long days = duration.toDays();

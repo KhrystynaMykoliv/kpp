@@ -1,0 +1,82 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "fee": {
+      "amount": 5000.0,
+      "isDiscount": true
+    }
+  },
+  {
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "fee": {
+      "amount": 5500.0,
+      "isDiscount": false
+    }
+  },
+  {
+    "firstName": "Alice",
+    "lastName": "Johnson",
+    "fee": {
+      "amount": 5200.0,
+      "isDiscount": false
+    }
+  },
+  {
+    "firstName": "Bob",
+    "lastName": "Smith",
+    "fee": {
+      "amount": 5300.0,
+      "isDiscount": false
+    }
+  },
+  {
+    "firstName": "Charlie",
+    "lastName": "Brown",
+    "fee": {
+      "amount": 5100.0,
+      "isDiscount": true
+    }
+  },
+  {
+    "firstName": "David",
+    "lastName": "Wilson",
+    "fee": {
+      "amount": 5400.0,
+      "isDiscount": false
+    }
+  },
+  {
+    "firstName": "Eve",
+    "lastName": "Davis",
+    "fee": {
+      "amount": 5600.0,
+      "isDiscount": false
+    }
+  },
+  {
+    "firstName": "Frank",
+    "lastName": "Miller",
+    "fee": {
+      "amount": 5000.0,
+      "isDiscount": false
+    }
+  },
+  {
+    "firstName": "Grace",
+    "lastName": "Taylor",
+    "fee": {
+      "amount": 5300.0,
+      "isDiscount": false
+    }
+  },
+  {
+    "firstName": "Hank",
+    "lastName": "Moore",
+    "fee": {
+      "amount": 5700.0,
+      "isDiscount": true
+    }
+  }
+]

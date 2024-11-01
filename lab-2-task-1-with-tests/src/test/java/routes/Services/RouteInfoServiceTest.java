@@ -29,7 +29,20 @@ class RouteInfoServiceTest {
 
         assertNotNull(routeInfo);
         assertEquals(1, routeInfo.size());
-        assertEquals("Маршрут не містить етапів.", routeInfo.getFirst());
+        assertEquals("Маршрут не містить етапів.", routeInfo.get(0));
+    }
+
+    @Test
+    void testGetRouteInfoWithLegs() {
+        Route route = createTestRoute();
+        List<String> routeInfo = routeInfoService.getRouteInfo(route);
+
+        assertNotNull(routeInfo);
+        assertTrue(routeInfo.size() > 1);
+        assertTrue(routeInfo.contains("Загальна кількість етапів: 2"));
+        assertTrue(routeInfo.contains("Загальна відстань: 700 км"));
+        assertTrue(routeInfo.stream().anyMatch(info -> info.startsWith("Час відправлення з початкової зупинки: ")));
+        assertTrue(routeInfo.stream().anyMatch(info -> info.startsWith("Час прибуття на кінцеву зупинку: ")));
     }
 
     private Route createTestRoute() {
